@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+        "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+    <constant name="struts.devMode" value="true"/>
+    <package name="spkAbsensi" extends="struts-default" namespace="/absensi">
+
+    	<action name="searchAbsensi" class="com.id.ga.modul.action.AbsensiAction" method="selectAll">
+    		<result name="success">/pages/modul/absensi/absensiMain.jsp</result>
+    		<result name="error">/pages/modul/absensi/absensiMain.jsp</result>
+    	</action>
+    	<action name="selectWhereID" class="com.id.ga.modul.action.AbsensiAction" method="selectWhereID">
+    		<result name="input">/pages/modul/absensi/absensiEdit.jsp</result>
+    		<result name="success">/pages/modul/absensi/absensiEdit.jsp</result>
+    		<result name="error">/pages/modul/absensi/absensiEdit.jsp</result>
+    	</action>
+    	<action name="searchToYearAbsensi" class="com.id.ga.modul.action.AbsensiAction" method="selectToYear">
+    		<result name="success">/pages/modul/absensi/absensiYear.jsp</result>
+    		<result name="error">/pages/modul/absensi/absensiYear.jsp</result>
+    	</action>
+    	<action name="AddAbsensi">
+    		<result name="input">/pages/modul/absensi/absensiAdd.jsp</result>
+    		<result name="success">/pages/modul/absensi/absensiAdd.jsp</result>
+    		<result name="error">/pages/modul/absensi/absensiAdd.jsp</result>
+    	</action>
+    	<action name="SaveAbsensi" class="com.id.ga.modul.action.AbsensiAction" method="insertAbsensi">
+    		<result name="input">/pages/modul/absensi/absensiAdd.jsp</result>
+    		<result name="success">/pages/modul/absensi/absensiMain.jsp</result>
+    		<result name="error">/pages/modul/absensi/absensiAdd.jsp</result>
+    	</action>
+    	<action name="EditeAbsensi" class="com.id.ga.modul.action.AbsensiAction" method="updateAbsensi">
+    		<result name="success">/pages/modul/absensi/absensiMain.jsp</result>
+    		<result name="error">/pages/modul/absensi/absensiEdit.jsp</result>
+    	</action>
+    	<action name="DeleteAbsensi" class="com.id.ga.modul.action.AbsensiAction" method="deleteAbsensi">
+    		<result name="success">/pages/modul/absensi/absensiMain.jsp</result>
+    		<result name="error">/pages/modul/absensi/absensiMain.jsp</result>
+    	</action>
+    </package>
+</struts>

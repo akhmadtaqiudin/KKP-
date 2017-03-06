@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+        "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+    <constant name="struts.devMode" value="true"/>
+    <package name="spkKaryawan" extends="struts-default,json-default" namespace="/karyawan">
+        
+    	<action name="searchKaryawan" class="com.id.ga.modul.action.KaryawanAction" method="selectAll">
+    		<result name="success">/pages/modul/karyawan/karyawanMain.jsp</result>
+    		<result name="error">/pages/modul/karyawan/karyawanMain.jsp</result>
+    	</action>
+    	<action name="selectWhereNik" class="com.id.ga.modul.action.KaryawanAction" method="selectWhereNik">
+    		<result name="input">/pages/modul/karyawan/karyawanEdit.jsp</result>
+    		<result name="success">/pages/modul/karyawan/karyawanEdit.jsp</result>
+    		<result name="error">/pages/modul/karyawan/karyawanEdit.jsp</result>
+    	</action>
+    	<action name="selectListKaryawan" class="com.id.ga.modul.action.KaryawanAction" method="selectListKaryawan">
+    		<result name="success">/pages/modul/karyawan/karyawanMain.jsp</result>
+    		<result name="error">/pages/modul/karyawan/karyawanMain.jsp</result>
+    	</action>
+    	<action name="SelectByJson" class="com.id.ga.modul.action.KaryawanAction" method="selectJson">
+    		<result type="json">
+                <param name="noCache">true</param>
+		        <param name="root">karyawan</param>
+    		</result>
+    	</action>
+    	<action name="AddKaryawan">
+    		<result name="input">/pages/modul/karyawan/karyawanAdd.jsp</result>
+    		<result name="success">/pages/modul/karyawan/karyawanAdd.jsp</result>
+    		<result name="error">/pages/modul/karyawan/karyawanAdd.jsp</result>
+    	</action>
+    	<action name="SaveKaryawan" class="com.id.ga.modul.action.KaryawanAction" method="insert">
+    		<result name="input">/pages/modul/karyawan/karyawanAdd.jsp</result>
+    		<result name="success">/pages/modul/karyawan/karyawanMain.jsp</result>
+    		<result name="error">/pages/modul/karyawan/karyawanAdd.jsp</result>
+    	</action>
+    	<action name="EditeKaryawan" class="com.id.ga.modul.action.KaryawanAction" method="update">
+    		<result name="input">/pages/modul/karyawan/karyawanMain.jsp</result>
+    		<result name="success">/pages/modul/karyawan/karyawanMain.jsp</result>
+    		<result name="error">/pages/modul/karyawan/karyawanMain.jsp</result>
+    	</action>
+    	<action name="DeleteKaryawan" class="com.id.ga.modul.action.KaryawanAction" method="delet">
+    		<result name="success">/pages/modul/karyawan/karyawanMain.jsp</result>
+    		<result name="error">/pages/modul/karyawan/karyawanMain.jsp</result>
+    	</action>
+    </package>
+</struts>

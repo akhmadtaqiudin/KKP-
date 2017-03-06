@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+        "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+    <constant name="struts.devMode" value="true"/>
+    <package name="GA" extends="struts-default" namespace="/">
+    	<action name="login">
+    		<result name="input">/pages/templates/login.jsp</result>
+    		<result name="success">/pages/templates/login.jsp</result>
+    		<result name="error">/pages/templates/login.jsp</result>
+    	</action>
+    	<action name="Save" class="com.id.ga.modul.action.AbsensiAction" method="insertBySystem">
+    		<result name="input">/index.jsp</result>
+    		<result name="success">/index.jsp</result>
+    		<result name="error">/index.jsp</result>
+    	</action>
+    </package>
+	<include file="action/userAction.xml"></include>
+    <include file="action/karyawanAction.xml"></include>
+    <include file="action/absensiAction.xml"></include>
+    <include file="action/produksiAction.xml"></include>
+</struts>

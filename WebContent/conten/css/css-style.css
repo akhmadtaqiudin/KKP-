@@ -1,0 +1,86 @@
+#nav{
+	background-color: #3ccf6e;
+	height: 52px;
+}
+#logo{
+	width: 140px;
+	height: 54px;
+	margin-top: -17px;
+}
+.header{
+	margin-top: 71px;
+	margin-bottom: -31px;
+}
+ul li{
+	color: black;
+}
+#c{
+	margin-bottom: -13px;
+}
+#add{
+	float: left;
+	margin-top: -33px;
+}
+.box{
+	margin-top: 30px;
+	margin-top:95px;
+}
+#search{
+	float: left;
+	width: 10%;
+	margin-top: -33px;
+    margin-left: 967px;
+}
+#nik{
+	width: 13%;
+    height: 29px;
+	margin-left: 836px;
+	margin-top: 49px;
+}
+.navbar-right .dropdown-menu{
+	right: -97px;
+}
+.btn-warning{
+	width: 49px;
+}
+.pagination{
+	font-size: 11px;
+	margin-bottom: -5px;
+}
+#sub{
+	padding: -5px;
+	height: 20px;
+}
+#input{
+	margin-top: 51px;
+	/* margin-left: 15%;
+	margin-right: 10%;
+	width: 75%; */
+}
+#form{
+	margin-bottom: 9px;
+}
+/* #fade {
+	opacity: 0;
+	-webkit-transition: opacity 2.25s linear;
+	-moz-transition: opacity 2.25s linear;
+	-ms-transition: opacity 2.25s linear;
+	-o-transition: opacity 2.25s linear;
+	transition: opacity 2.25s linear;
+} */
+.panel{
+	margin-top: 110px;
+}
+#date{
+	color:silver;
+	font-size:40px;
+	border:2px dashed #2E9AFE;
+	width:367px;
+}
+#time{
+	margin-top:20px;
+	font-size:100px;
+	color:silver;
+	border:2px dashed #2E9AFE;
+	width:500px;
+}

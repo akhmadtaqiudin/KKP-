@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+        "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+    <constant name="struts.devMode" value="true"/>
+    <package name="spkProduksi" extends="struts-default" namespace="/produksi">
+
+    	<action name="searchProduksi" class="com.id.ga.modul.action.ProduksiAction" method="selectAll">
+    		<result name="success">/pages/modul/produksi/produksiMain.jsp</result>
+    		<result name="error">/pages/modul/produksi/produksiMain.jsp</result>
+    	</action>
+    	<action name="SearchWhereId" class="com.id.ga.modul.action.ProduksiAction" method="selectWhereId">
+    		<result name="input">/pages/modul/produksi/produksiEdit.jsp</result>
+    		<result name="success">//pages/modul/produksi/produksiEdit.jsp</result>
+    		<result name="error">/pages/modul/produksi/produksiEdit.jsp</result>
+    	</action>
+    	<action name="searchToYearProduksi" class="com.id.ga.modul.action.ProduksiAction" method="selectToYear">
+    		<result name="success">/pages/modul/produksi/produksiYear.jsp</result>
+    		<result name="error">/pages/modul/produksi/produksiYear.jsp</result>
+    	</action>
+    	<action name="AddProduksi">
+    		<result name="input">/pages/modul/produksi/produksiAdd.jsp</result>
+    		<result name="success">/pages/modul/produksi/produksiAdd.jsp</result>
+    		<result name="error">/pages/modul/produksi/produksiAdd.jsp</result>
+    	</action>
+    	<action name="SaveProduksi" class="com.id.ga.modul.action.ProduksiAction" method="insertProduksi">
+    		<result name="input">/pages/modul/produksi/produksiAdd.jsp</result>
+    		<result name="success">/pages/modul/produksi/produksiMain.jsp</result>
+    		<result name="error">/pages/modul/produksi/produksiAdd.jsp</result>
+    	</action>
+    	<action name="EditeProduksi" class="com.id.ga.modul.action.ProduksiAction" method="updateProduksi">
+    		<result name="input">/pages/modul/produksi/produksiAdd.jsp</result>
+    		<result name="success">/pages/modul/produksi/produksiMain.jsp</result>
+    		<result name="error">/pages/modul/produksi/produksiAdd.jsp</result>
+    	</action>
+    	<action name="DeleteProduksi" class="com.id.ga.modul.action.ProduksiAction" method="deleteProduksi">
+    		<result name="success">/pages/modul/produksi/produksiMain.jsp</result>
+    		<result name="error">/pages/modul/produksi/produksiMain.jsp</result>
+    	</action>
+    </package>
+</struts>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.id.ga.modul.mapper.AbsensiMapper">
+	<resultMap id="BaseResultMap" type="com.id.ga.modul.model.Absensi" >
+	    <id column="id_absensi" property="idAbsensi"/>
+	    <result column="nik_karyawan" property="nik" />
+	    <result column="tanggal" property="tanggal" />
+	    <result column="hadir" property="hadir" />
+	    <result column="alpha" property="alpha" />
+	    <result column="izin" property="izin" />
+	    <result column="sakit" property="sakit" />
+	    <result column="persen_pencapaian" property="persenPencapaian" />
+	    <result column="nama_karyawan" property="namaKaryawan" />
+	    <result column="section" property="section" />
+	    <result property="tanggalAwal" />
+	    <result property="tanggalAkhir" />
+	</resultMap>
+	<select id="selectWhereID" parameterType="com.id.ga.modul.model.Absensi" resultMap="BaseResultMap">
+		SELECT *, k.nama_karyawan, k.section
+		FROM absensi a
+		left join karyawan k on a.nik_karyawan=k.nik_karyawan
+		WHERE id_absensi = #{idAbsensi}
+	</select>
+	<select id="selectAll" parameterType="com.id.ga.modul.model.Absensi" resultMap="BaseResultMap">
+		SELECT *, k.nama_karyawan, k.section
+		FROM absensi a
+		left join karyawan k on a.nik_karyawan=k.nik_karyawan
+		WHERE a.nik_karyawan like '%'|| #{nik} ||'%'
+	</select>
+    <select id="selectToYear" parameterType="com.id.ga.modul.model.Absensi" resultMap="BaseResultMap">
+		select a.nik_karyawan, sum(hadir) hadir, sum(alpha) alpha, sum(izin) izin, sum(sakit) sakit from absensi a
+		where a.nik_karyawan like '%' || #{nik} || '%'
+		group by a.nik_karyawan
+	</select>
+    <select id="maxId" parameterType="com.id.ga.modul.model.Absensi" resultType="java.lang.Integer">
+  		SELECT COUNT(*) FROM absensi
+  	</select>
+  	<select id="countAbsensi" parameterType="com.id.ga.modul.model.Absensi" resultType="java.lang.Integer">
+  		SELECT COUNT(*) FROM absensi
+  		WHERE nik_karyawan=#{nik} AND tanggal=#{tanggal}
+  	</select>
+	<insert id="insertRecordAbsensi" parameterType="com.id.ga.modul.model.Absensi">
+		INSERT INTO absensi(id_absensi, nik_karyawan, tanggal, hadir, alpha, izin, sakit)
+    	VALUES (#{idAbsensi}, #{nik}, #{tanggal},  #{hadir}, #{alpha}, #{izin}, #{sakit})
+	</insert>
+	<insert id="insertRecordBySystem" parameterType="com.id.ga.modul.model.Absensi">
+		INSERT INTO absensi(id_absensi, nik_karyawan, tanggal, hadir, alpha, izin, sakit)
+    	VALUES (#{idAbsensi}, #{nik}, now(),  #{hadir}, #{alpha}, #{izin}, #{sakit})
+	</insert>
+	<update id="updateRecordAbsensi" parameterType="com.id.ga.modul.model.Absensi">
+		UPDATE absensi
+   		SET nik_karyawan=#{nik}, tanggal=#{tanggal}, hadir=#{hadir}, alpha=#{alpha}, izin=#{izin}, sakit=#{sakit}
+ 		WHERE id_absensi=#{idAbsensi}
+	</update>
+	<delete id="deletRecordAbsensi" parameterType="com.id.ga.modul.model.Absensi">
+		DELETE FROM absensi
+		WHERE id_absensi = #{idAbsensi}
+	</delete>
+</mapper>

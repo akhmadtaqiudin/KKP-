@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.id.ga.modul.mapper.ProduksiMapper">
+	<resultMap id="BaseResultMap" type="com.id.ga.modul.model.Produksi" >
+	    <result column="id_produksi" property="idProduksi"/>
+	    <result column="hasil_proses" property="hasilProses" />
+	    <result column="reject_proses" property="rejectProses" />
+	    <result column="target_produksi" property="targetHarian" />
+	    <result column="persen_pencapaian" property="persenPencapaian" />
+	    <result column="tanggal" property="tanggal" />
+	    <result column="nik_karyawan" property="nik" />
+	    <result column="nama" property="namaKaryawan" />
+	    <result column="section" property="section"/>
+	</resultMap>
+	<select id="selectWhereId" parameterType="com.id.ga.modul.model.Produksi" resultMap="BaseResultMap">
+		SELECT *, k.nama_karyawan, k.section, k.target_produksi
+		FROM produksi p
+		left join karyawan k on p.nik_karyawan=k.nik_karyawan
+		WHERE id_produksi = #{idProduksi}
+	</select>
+	<select id="selectAll" parameterType="com.id.ga.modul.model.Produksi" resultMap="BaseResultMap">
+		SELECT *, k.nama_karyawan, k.section
+		FROM produksi p
+		left join karyawan k on p.nik_karyawan=k.nik_karyawan
+		WHERE
+		p.nik_karyawan like '%'|| #{nik} ||'%'
+	</select>
+	<select id="selectToYear" parameterType="com.id.ga.modul.model.Produksi" resultMap="BaseResultMap">
+		select p.nik_karyawan, sum(hasil_proses) hasil_proses, sum(reject_proses)reject_proses, 
+		sum(target_harian) target_harian, sum(persen_pencapaian) persen_pencapaian from produksi p
+		where p.nik_karyawan like '%' || #{nik} || '%'
+		group by p.nik_karyawan
+	</select>
+    <select id="selectMax" parameterType="com.id.ga.modul.model.Produksi" resultType="java.lang.Integer">
+  		SELECT COUNT(*) FROM karyawan
+  	</select>
+	<insert id="insertRecordProduksi" parameterType="com.id.ga.modul.model.Produksi">
+		INSERT INTO produksi(id_produksi, tanggal, nik_karyawan, hasil_proses, reject_proses, peresent_pencapaian)
+    	VALUES
+			(#{idProduksi}, now(),#{nik},#{hasilProses},#{rejectProses},#{presentPencapaian})
+	</insert>
+	<update id="updateRecordProduksi" parameterType="com.id.ga.modul.model.Produksi">
+		UPDATE produksi SET
+		hasil_proses = #{hasilProses}, reject_proses = #{rejectProses}
+		WHERE id_produksi=#{idProduksi}
+	</update>
+	<delete id="deletRecordProduksi" parameterType="com.id.ga.modul.model.Produksi">
+		DELETE FROM produksi
+		WHERE id_produksi = #{idProduksi}
+	</delete>
+</mapper>

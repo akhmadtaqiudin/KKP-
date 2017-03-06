@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.id.ga.modul.mapper.KaryawanMapper">
+	<resultMap id="BaseResultMap" type="com.id.ga.modul.model.Karyawan" >
+	    <result column="nik_karyawan" property="nik"/>
+	    <result column="nama_karyawan" property="namaKaryawan" />
+	    <result column="tempat_lahir" property="tempatLahir" />
+	    <result column="tanggal_lahir" property="tanggalLahir" />
+	    <result column="jenis_kelamin" property="jenisKelamin" />
+	    <result column="status" property="status" />
+	    <result column="agama" property="agama" />
+	    <result column="alamat" property="alamat" />
+	    <result column="kontak" property="kontak" />
+	    <result column="section" property="section" />
+	</resultMap>
+	<select id="selectWhereNik" parameterType="com.id.ga.modul.model.Karyawan" resultMap="BaseResultMap">
+		SELECT * FROM karyawan
+		WHERE nik_karyawan = #{nik}
+	</select>
+	<select id="selectAll" parameterType="com.id.ga.modul.model.Karyawan"	resultMap="BaseResultMap">
+		SELECT * FROM karyawan
+		WHERE
+		nama_karyawan like '%'|| #{namaKaryawan} ||'%'
+	</select>
+  	<select id="selectMax" parameterType="com.id.ga.modul.model.Karyawan" resultType="java.lang.Integer">
+  		SELECT COUNT(*) FROM karyawan
+  	</select>
+  	<select id="selectNikKaryawan" parameterType="com.id.ga.modul.model.Karyawan" resultType="java.lang.String">
+		SELECT * FROM karyawan
+		WHERE nik_karyawan = #{nik}
+	</select>
+	<select id="selectListKaryawan" parameterType="com.id.ga.modul.model.Karyawan" resultMap="BaseResultMap">
+		SELECT * FROM karyawan
+	</select>
+	<insert id="insertRecordKaryawan" parameterType="com.id.ga.modul.model.Karyawan">
+		INSERT INTO karyawan(
+            nik_karyawan, nama_karyawan, tempat_lahir, tanggal_lahir, jenis_kelamin, 
+            status, agama, alamat, kontak, section)
+    	VALUES
+			(#{nik},#{namaKaryawan},#{tempatLahir},#{tanggalLahir},#{jenisKelamin},#{status},#{agama},#{alamat},#{kontak},#{section})
+	</insert>
+	<update id="updateRecordKaryawan" parameterType="com.id.ga.modul.model.Karyawan">
+		UPDATE karyawan SET
+		nama_karyawan=#{namaKaryawan}, tempat_lahir=#{tempatLahir}, tanggal_lahir=#{tanggalLahir}, 
+		jenis_kelamin=#{jenisKelamin}, status=#{status}, agama=#{agama}, alamat=#{alamat}, 
+		kontak=#{kontak}, section=#{section}
+		WHERE nik_karyawan=#{nik}
+	</update>
+	<delete id="deletRecordWhereNik" parameterType="com.id.ga.modul.model.Karyawan">
+		DELETE FROM karyawan
+		WHERE nik_karyawan = #{nik}
+	</delete>
+</mapper>
