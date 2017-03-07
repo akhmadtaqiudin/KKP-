@@ -1,6 +1,7 @@
-#Absensi Dan Produksi
+## Absensi Dan Produksi
 
-# FrameWork
+# Peralatan tempur
+```
 
 [Mybatis](http://blog.mybatis.org/)
 
@@ -12,6 +13,5 @@
 
 [Display Tag](http://www.displaytag.org/1.2/)
 
-#Database
-
 [Postgresql](https://www.postgresql.org/)
+```
